@@ -6,7 +6,7 @@ module "redis" {
   nomad_namespace   = "default"
 
   # redis
-  service_name    = "nifi"
+  service_name    = "redis"
   host            = "127.0.0.1"
   port            = 6379
   container_image = "redis:3-alpine"

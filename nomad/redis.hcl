@@ -28,6 +28,12 @@ job "redis" {
       port = "${port}"
       connect {
         sidecar_service {}
+        sidecar_task {
+        resources {
+          cpu     = "${cpu_proxy}"
+          memory  = "${memory_proxy}"
+          }
+        }
       }
       check {
         type     = "script"
