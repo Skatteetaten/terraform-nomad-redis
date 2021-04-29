@@ -26,15 +26,6 @@ job "redis" {
     service {
       name = "${service_name}"
       port = "${port}"
-      connect {
-        sidecar_service {}
-        sidecar_task {
-        resources {
-          cpu     = "${cpu_proxy}"
-          memory  = "${memory_proxy}"
-          }
-        }
-      }
       check {
         type     = "script"
         name     = "Redis alive"
@@ -44,12 +35,26 @@ job "redis" {
         interval = "5s"
         timeout  = "5s"
       }
+      connect {
+        sidecar_service {}
+        sidecar_task {
+        resources {
+          cpu     = "${cpu_proxy}" # MHz
+          memory  = "${memory_proxy}" #MB
+          }
+        }
+      }
+
     }
 
     task "redis-service" {
       driver = "docker"
       config {
         image = "${image}"
+      }
+      resources {
+        cpu    = "${cpu}" # MHz
+        memory = "${memory}" # MB
       }
     }
   }
