@@ -17,12 +17,12 @@ variable "service_name" {
 }
 variable "host" {
   type        = string
-  description = "redis host"
+  description = "Redis host"
   default     = "127.0.0.1"
 }
 variable "port" {
   type        = number
-  description = "redis port"
+  description = "Redis port"
   default     = 6379
 }
 variable "container_image" {
