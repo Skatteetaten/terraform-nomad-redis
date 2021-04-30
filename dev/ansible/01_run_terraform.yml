@@ -1,0 +1,10 @@
+- name: Terraform redash {{ mode }}
+  terraform:
+    project_path: ../../example/{{ mode }}
+    force_init: true
+    state: present
+  register: terraform
+
+- name: Terraform nifi_registry {{ mode }} stdout
+  debug:
+    msg: "{{terraform.stdout}}"
