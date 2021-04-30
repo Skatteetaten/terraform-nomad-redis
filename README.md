@@ -62,7 +62,7 @@ PONG
 
 ## Example usage
 Example-code that shows how to use the module and, if applicable, its different use cases.
-```hcl-terraform
+```hcl
 module "redis" {
   source = "../.."
 
