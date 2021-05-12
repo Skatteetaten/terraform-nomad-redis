@@ -9,6 +9,12 @@ variable "nomad_namespace" {
   description = "[Enterprise] Nomad namespace"
   default     = "default"
 }
+# Consul
+variable "consul_tags" {
+  type = list(string)
+  default = [""]
+  description = "List of one or more tags to announce in Consul, for service discovery purposes"
+}
 # Redis
 variable "service_name" {
   type        = string

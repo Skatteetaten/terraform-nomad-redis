@@ -1,6 +1,6 @@
-job "redis" {
+job "${service_name}" {
   type        = "service"
-  datacenters = ["${datacenters}"]
+  datacenters = "${datacenters}"
   namespace   = "${namespace}"
 
   update {
@@ -9,12 +9,12 @@ job "redis" {
     min_healthy_time  = "10s"
     healthy_deadline  = "55m"
     progress_deadline = "1h"
+    stagger           = "30s"
 %{ if use_canary }
     canary            = 1
     auto_promote      = true
     auto_revert       = true
 %{ endif }
-    stagger           = "30s"
   }
 
   group "redis" {
@@ -26,6 +26,7 @@ job "redis" {
     service {
       name = "${service_name}"
       port = "${port}"
+      tags = ["${consul_tags}"]
       check {
         type     = "script"
         name     = "Redis alive"

@@ -7,7 +7,6 @@ module "redis" {
 
   # redis
   service_name    = "redis"
-  host            = "127.0.0.1"
   port            = 6379
   container_image = "redis:3-alpine"
   use_canary      = false
